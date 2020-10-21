@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "cypress run",
+    "start": "node lib/index.js",
     "ci:test": "npm-run-all -p -r start test",
-    "start": "node src/index.js",
-    "test": "cypress run"
+    "build": "coffee --compile --output lib/ src/",
+    "prepare": "npm run build && npm run ci:test",
+    "prepublish": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "coffeescript": "^2.5.1",
     "cypress": "^3.4.1",
     "npm-run-all": "^4.1.5"
   },
